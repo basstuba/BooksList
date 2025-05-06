@@ -1,0 +1,29 @@
+{% extends 'layouts/layout.html' %}
+{% block content %}
+<table>
+    <thead>
+        <tr>
+            <th>Book ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if books %}
+            {% for book in books %}
+                <tr>
+                    <td><a href="/core/{{ book.book_id }}">{{ book.book_id }}</a></td>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td><a href="/core/{{ book.book_id }}/edit">[Edit]</a></td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="4">No books.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

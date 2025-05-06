@@ -1,0 +1,28 @@
+{% extends "layouts/auth_layout.html" %}
+{% block content %}
+<div class="auth">
+    <h2 class="auth-logo">Login</h2>
+    <form action="{% url 'accounts:login' %}" method="POST">
+    {% csrf_token %}
+        <div class="form-item">
+            <label class="form-item__label" for="name">User name</label>
+            <input class="form-item__input" type="text" id="name" name="username"
+                value="{{ form.username.value|default:'' }}" placeholder="Name">
+            {% if form.username.errors %}
+                <div class="form-item__error">{{ form.username.errors.0 }}</div>
+            {% endif %}
+        </div>
+        <div class="form-item">
+            <label class="form-item__label" for="pass">Password</label>
+            <input class="form-item__input" type="password" id="pass" name="password" placeholder="Password">
+            {% if form.password.errors %}
+                <div class="form-item__error">{{ form.password.errors.0 }}</div>
+            {% endif %}
+        </div>
+        <button class="form-button" type="submit">ログイン</button>
+    </form>
+    <div class="auth-link">
+        <a class="auth-link__a" href="{% url 'accounts:signup' %}">新規登録はこちら</a>
+    </div>
+</div>
+{% endblock %}

@@ -31,10 +31,6 @@
     make venv
     ```
 2. VS Codeを再起動して、VS Code下部のPythonバージョンを **.venv** のものに設定
-3. VS Codeのターミナルで下記のコマンド実行
-    ```
-    pip install -r requirements.txt
-    ```
 
 ## 各種コマンド
 

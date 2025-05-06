@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'apps.core',
+    'apps.accounts',
 ]
 
 MIDDLEWARE = [
@@ -109,6 +110,16 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# ログイン後のリダイレクト先
+LOGIN_REDIRECT_URL = '/core/'
+
+# ログアウト後のリダイレクト先
+LOGOUT_REDIRECT_URL = '/accounts/login/'
+
+# ログインページのURL
+LOGIN_URL = '/accounts/login/'
+
 
 
 # Internationalization

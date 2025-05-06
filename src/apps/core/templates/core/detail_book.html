@@ -1,0 +1,20 @@
+{% extends "layouts/layout.html" %}
+{% block content %}
+<table>
+    <tr>
+        <th>Book ID</th>
+        <td>{{ book.book_id }}</td>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <td>{{ book.title }}</td>
+    </tr>
+    <tr>
+        <th>Author</th>
+        <td>{{ book.author }}</td>
+    </tr>
+</table>
+<div>
+    <button onclick="location.href='/core/'">Return</button>
+</div>
+{% endblock %}

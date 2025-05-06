@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+</head>
+<body>
+    <div class="header-block">
+        @ Django Sample
+    </div>
+    <div class="menu-block">
+        <a class="menu-block__link" href="/core/">book</a>
+        <form action="{% url 'accounts:logout' %}">
+            <button class="logout" type="submit">logout</button>
+        </form>
+    </div>
+    <div class="content-block">
+        <h1>{{ title }}</h1>
+        {% if success_message %}
+        <div class="msg-success">{{ success_message }}</div>
+        {% elif warning_message %}
+        <div class="msg-warning">{{ warning_message }}</div>
+        {% elif error_message %}
+        <div class="msg-error">{{ error_message }}</div>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

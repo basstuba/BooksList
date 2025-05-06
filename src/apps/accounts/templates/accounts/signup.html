@@ -1,0 +1,44 @@
+{% extends "layouts/auth_layout.html" %}
+{% block content %}
+<div class="auth">
+    <h2 class="auth-logo">Signup</h2>
+    <form action="{% url 'accounts:signup' %}" method="POST">
+    {% csrf_token %}
+        <div class="form-item">
+            <label class="form-item__label" for="name">User name</label>
+            <input class="form-item__input" type="text" id="name" name="username"
+                value="{{ form.username.value|default:'' }}" placeholder="Name">
+            {% if form.username.errors %}
+                <div class="form-item__error">{{ form.username.errors.0 }}</div>
+            {% endif %}
+        </div>
+        <div class="form-item">
+            <label class="form-item__label" for="pass1">Password</label>
+            <input class="form-item__input" type="text" id="pass1" name="password1"
+                value="{{ form.password.value|default:'' }}" placeholder="Password">
+            {% if form.password.errors %}
+                <div class="form-item__error">{{ form.password.errors.0 }}</div>
+            {% endif %}
+        </div>
+        <div class="form-item">
+            <label class="form-item__label" for="pass2">確認用Password</label>
+            <input class="form-item__input" type="text" id="pass2" name="password2"
+                value="{{ form.password.value|default:'' }}" placeholder="Password">
+            {% if form.password.errors %}
+                <div class="form-item__error">{{ form.password.errors.0 }}</div>
+            {% endif %}
+        </div>
+        <button class="form-button" type="submit">登録</button>
+        {% if form.non_field_errors %}
+        <div class="form-errors">
+            {% for error in form.non_field_errors %}
+            <div class="form-item__error">{{ error }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </form>
+    <div class="auth-link">
+        <a class="auth-link__a" href="{% url 'accounts:login' %}">ログイン画面へ</a>
+    </div>
+</div>
+{% endblock %}
